@@ -1,7 +1,5 @@
 import sys
 
-global eps, max_iter, K, input_file, output_file, lines, dim
-
 
 def __main__():
     """
@@ -30,6 +28,7 @@ def setVariables():
         if valid_input() == -1, then input is in-valid, and we have an error
     :return: None
     """
+    global eps, max_iter, K, input_file, output_file, lines, dim
     eps = 0.0001
     K = int(sys.argv[1])
     if len(sys.argv) == 5:
@@ -232,7 +231,7 @@ def writeToFile(centroids):
     """
     try:
         # open file
-        file = open(output_file, 'w')
+        file = open(output_file, 'x')
         for i in range(len(centroids)):
             for j in range(dim):
                 if j != dim - 1:  # not the last entry
@@ -244,3 +243,6 @@ def writeToFile(centroids):
         print("Invalid Input!")
         exit()
 
+
+if "__name__" == __main__():
+    __main__()
