@@ -1,5 +1,6 @@
 import sys
 import random as rand
+import os
 """
 This program responsible for creating a two dimension data points
 after running this program you will have a new .txt file named 'randTwoDim.txt'
@@ -9,12 +10,20 @@ in 'Kmeans/Files/' path,
 
 
 def __main__():
-    if len(sys.argv) > 1:
-        rand.seed(sys.argv[1])
-    with open("./Files/randTwoDim.txt", "x") as f:
-        for i in range(1000):
-            f.write(str(rand.uniform(-10, 10)) + ", " + str(rand.uniform(-10, 10)) + "\n")
-    f.close()
+    size = 100
+    try:
+        rand.seed(sys.argv[2])
+        size = eval(sys.argv[1])
+    except IndexError:
+        if len(sys.argv) == 2:
+            size = eval(sys.argv[1])
+    finally:
+        if os.path.exists("./Files/randTwoDim.txt"):
+            os.remove("./Files/randTwoDim.txt")
+        with open("./Files/randTwoDim.txt", "x") as f:
+            for i in range(size):
+                f.write("%.4f" % rand.uniform(-10, 10) + ", " + "%.4f" % rand.uniform(-10, 10) + "\n")
+        f.close()
 
 
 if "__name__" == __main__():

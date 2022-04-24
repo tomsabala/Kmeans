@@ -15,9 +15,13 @@ def __main__():
     centroids = [[0.0 for x in range(dim)] for y in range(K)]
     initCntr(centroids, vectors)
     # algorithm
-    k_means(vectors, centroids)
+    vecToCluster = k_means(vectors, centroids)
     # write back to output file
     writeToFile(centroids)
+    clusters = [[] for _ in range(K)]
+    for i in range(len(vecToCluster)):
+        clusters[vecToCluster[i]].append(vectors[i])
+    writeBackClusters(vecToCluster)
 
 
 def setVariables():
@@ -213,6 +217,7 @@ def k_means(vectors, centroids):
     :return: None
     """
     iter = 0
+    global clusters
     while not isConv(centroids) and iter < max_iter:  # if we passed max iteration number or all centroids are converged
         iter += 1
         clusters = [0 for _ in range(lines)]
@@ -221,9 +226,10 @@ def k_means(vectors, centroids):
         # calc new centroids
         for i in range(K):
             calcCntrK(clusters, vectors, centroids, i)
+    return clusters
 
 
-def writeToFile(centroids):
+def writeToFile(centroids, output=None):
     """
     write cluster/centroids to an output file
     :param centroids: centroids array
@@ -231,7 +237,9 @@ def writeToFile(centroids):
     """
     try:
         # open file
-        file = open(output_file, 'x')
+        if output is None:
+            output = output_file
+        file = open(output, 'w')
         for i in range(len(centroids)):
             for j in range(dim):
                 if j != dim - 1:  # not the last entry
@@ -240,8 +248,30 @@ def writeToFile(centroids):
                     file.write("%.4f" % centroids[i][j] + "\n")
         file.close()
     except FileNotFoundError:  # file not found
-        print("Invalid Input!")
-        exit()
+        file = open(output, 'x')
+        for i in range(len(centroids)):
+            for j in range(dim):
+                if j != dim - 1:  # not the last entry
+                    file.write("%.4f" % centroids[i][j] + ",")
+                else:  # last entry
+                    file.write("%.4f" % centroids[i][j] + "\n")
+        file.close()
+
+
+def writeBackClusters(vecToClusters):
+    """
+    this function responsible for writing back all vectors align to each cluster
+    :param clusters:
+    :return: None
+    """
+    with open(input_file, 'r') as f:
+        lines = f.readlines()
+        for i, line in enumerate(lines):
+            lines[i] = line.strip() + ", " + str(vecToClusters[i]) + "\n"
+    with open(input_file, "w") as f:
+        for line in lines:
+            f.write(line)
+    f.close()
 
 
 if "__name__" == __main__():
