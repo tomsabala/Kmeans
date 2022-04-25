@@ -27,4 +27,7 @@ Clusters Example:
 
 # How to use
 1) first about the data format: your data file should be list of vectors of the same dimension, written to a .txt file
+   for exempla:
+   
+   ![example2](View/dataEx.png)
  
