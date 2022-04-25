@@ -34,7 +34,7 @@ Clusters Example:
 2) Clone repo to your machine, and place your .txt data file in the 'Files' folder.
 3) Run `python3 Algo/kmeanPy.py 'k' 'i' Files/*.txt Files.*output.txt`
 
-   where **k** is the amount of clusters, **i** is the maximum iteration limited and ***** is your file name.
+   where **'k'** is the amount of clusters, **'i'** is the maximum iteration limited and **'*'** is your file name.
    
 4) if your data is a 2-dim vectors you can also view your cluster via
 `python3 View/MatchAlgo.py Files/*.txt f.png`
