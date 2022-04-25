@@ -21,3 +21,10 @@ Running time results:
 |       1000      |     5000     |       10      | **_35.327_** | **_2.587_** |
 |       1000      |     5000     |       15      | **_54.134_** | **_3.875_** |
 
+Clusters Example:
+
+![example1](View/figEx.png)
+
+# How to use
+1) first about the data format: your data file should be list of vectors of the same dimension, written to a .txt file
+ 
