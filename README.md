@@ -24,3 +24,7 @@ Running time results:
 Clusters Example:
 
 ![example1](View/figEx.png)
+
+# How to use
+1) first about the data format: your data file should be list of vectors of the same dimension, written to a .txt file
+ 
