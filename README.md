@@ -22,4 +22,5 @@ Running time results:
 |       1000      |     5000     |       15      | **_54.134_** | **_3.875_** |
 
 Cluster Example:
+
 ![example1](View/figEx.png)
