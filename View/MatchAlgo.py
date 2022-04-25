@@ -27,12 +27,15 @@ def __main__():
 def plotData(fileName, absPath):
     plt.rcParams["figure.figsize"] = [7.50, 3.50]
     plt.rcParams["figure.autolayout"] = True
+
     columns = ["v[0]", "v[1]", "v[2]"]
     df = pd.read_csv(absPath, usecols=columns)
 
     Xlist = df["v[0]"].tolist()
     Ylist = df["v[1]"].tolist()
     Clist = df["v[2]"].tolist()
+
+    clustrs = len(list(set(Clist)))
 
     def mapIntToColor(clusters_list):
         import random
@@ -44,6 +47,7 @@ def plotData(fileName, absPath):
     Clist = [int(c) for c in Clist]
     Clist = mapIntToColor(Clist)
 
+    plt.suptitle(str(len(Xlist)) + " vectors and " + str(clustrs) + " clusters")
     plt.xlabel("X")
     plt.ylabel("Y")
     plt.scatter(Xlist, Ylist, c=Clist, edgecolors='black', alpha=0.75)

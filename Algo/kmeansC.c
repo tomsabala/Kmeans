@@ -2,6 +2,7 @@
 #include <math.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 
 //constant
 #define eps 0.0001
@@ -108,7 +109,12 @@ int main(int argc, char **argv) {
     initCntr(cntr, mat, a.K, a.dim);
 
     // algorithm
+    clock_t start, end;
+    start = clock();
     k_means(mat, cntr, &a);
+    end = clock()-start;
+    double time_taken = ((double)end)/CLOCKS_PER_SEC;
+    printf("%f", time_taken);
 
     //writing back in document output
     writeBack(cntr, &a);

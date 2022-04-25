@@ -1,4 +1,5 @@
 import sys
+import time
 
 
 def __main__():
@@ -15,7 +16,10 @@ def __main__():
     centroids = [[0.0 for x in range(dim)] for y in range(K)]
     initCntr(centroids, vectors)
     # algorithm
+    t_start = time.time()
     vecToCluster = k_means(vectors, centroids)
+    t_end = time.time()
+    print(t_end - t_start)
     # write back to output file
     writeToFile(centroids)
     clusters = [[] for _ in range(K)]
