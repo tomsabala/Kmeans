@@ -26,8 +26,17 @@ Clusters Example:
 ![example1](View/figEx.png)
 
 # How to use
-1) first about the data format: your data file should be list of vectors of the same dimension, written to a .txt file
+1) First about the data format: your data file should be list of vectors of the same dimension, written to a .txt file
    for exempla:
    
    ![example2](View/dataEx.png)
  
+2) Clone repo to your machine, and place your .txt data file in the 'Files' folder.
+3) Run `python3 Algo/kmeanPy.py 'k' 'i' Files/*.txt Files.*output.txt`
+
+   where k is the amount of clusters, i is the maximum iteration limited and * is your file name.
+   
+4) if your data is a 2-dim vectors you can also view your cluster via
+`python3 View/MatchAlgo.py Files/*.txt f.png`
+
+this will create a new image f.png of your clusters.
