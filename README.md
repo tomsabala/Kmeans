@@ -1,6 +1,6 @@
 # Kmeans
 A k means algorithm implementation using C and Python.
-Both implementations come in order to compare efficiencies between C and Python.
+Both implementations comes in order to compare efficiencies between C and Python.
 
 
 # Implementation
@@ -20,3 +20,4 @@ Running time results:
 |       1000      |     2500     |       12      | **_20.123_** |  **_1.55_** |
 |       1000      |     5000     |       10      | **_35.327_** | **_2.587_** |
 |       1000      |     5000     |       15      | **_54.134_** | **_3.875_** |
+
